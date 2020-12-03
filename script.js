@@ -7,3 +7,9 @@ onload = function () {
     const decode = document.getElementById('decode');
     const temptext = document.getElementById('temptext');
     const upload = document.getElementById('uploadedFile');
+    
+    const coder = new HuffmanCoder();
+
+    upload.addEventListener('change',()=>{ alert("File uploaded") });
+
+    encode.onclick = function () {
