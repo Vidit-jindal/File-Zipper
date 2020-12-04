@@ -13,3 +13,8 @@ onload = function () {
     upload.addEventListener('change',()=>{ alert("File uploaded") });
 
     encode.onclick = function () {
+        const uploadedFile = upload.files[0];
+        if(uploadedFile===undefined){
+            alert("No file uploaded !");
+            return;
+        }
