@@ -18,3 +18,10 @@ onload = function () {
             alert("No file uploaded !");
             return;
         }
+        const fileReader = new FileReader();
+        fileReader.onload = function(fileLoadedEvent){
+            const text = fileLoadedEvent.target.result;
+            if(text.length===0){
+                alert("Text can not be empty ! Upload another file !");
+                return;
+            }
