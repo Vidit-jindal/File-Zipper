@@ -25,3 +25,11 @@ onload = function () {
                 alert("Text can not be empty ! Upload another file !");
                 return;
             }
+            let [encoded, tree_structure, info] = coder.encode(text);
+            downloadFile(uploadedFile.name.split('.')[0] +'_encoded.txt', encoded);
+            treearea.innerText = tree_structure;
+            treearea.style.marginTop = '2000px';
+            temptext.innerText = info;
+        };
+        fileReader.readAsText(uploadedFile, "UTF-8");
+    };
