@@ -33,3 +33,10 @@ onload = function () {
         };
         fileReader.readAsText(uploadedFile, "UTF-8");
     };
+decode.onclick = function () {
+
+        const uploadedFile = upload.files[0];
+        if(uploadedFile===undefined){
+            alert("No file uploaded !");
+            return;
+        }
