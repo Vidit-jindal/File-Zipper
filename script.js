@@ -57,3 +57,9 @@ fileReader.readAsText(uploadedFile, "UTF-8");
     };
 
 };
+function downloadFile(fileName, data){
+    let a = document.createElement('a');
+    a.href = "data:application/octet-stream,"+encodeURIComponent(data);
+    a.download = fileName;
+    a.click();
+}
