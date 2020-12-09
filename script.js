@@ -53,3 +53,7 @@ let [decoded, tree_structure, info] = coder.decode(text);
             treearea.style.marginTop = '2000px';
             temptext.innerText = info;
         };
+fileReader.readAsText(uploadedFile, "UTF-8");
+    };
+
+};
