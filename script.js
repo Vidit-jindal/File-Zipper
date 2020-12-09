@@ -47,3 +47,9 @@ const fileReader = new FileReader();
                 alert("Text can not be empty ! Upload another file !");
                 return;
             }
+let [decoded, tree_structure, info] = coder.decode(text);
+            downloadFile(uploadedFile.name.split('.')[0] +'_decoded.txt', decoded);
+            treearea.innerText = tree_structure;
+            treearea.style.marginTop = '2000px';
+            temptext.innerText = info;
+        };
