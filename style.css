@@ -12,3 +12,6 @@ body {
     flex-wrap: wrap;
     align-content: center;
 }
+#container{
+    width: 100%;
+    height: 70%;
