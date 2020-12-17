@@ -28,3 +28,10 @@ class BinaryHeap {
             let element = this.heap[index],
                 parentIndex = Math.floor((index - 1) / 2),
                 parent = this.heap[parentIndex];
+
+            if (parent[0] >= element[0]) break;
+            this.heap[index] = parent;
+            this.heap[parentIndex] = element;
+            index = parentIndex
+        }
+    }
