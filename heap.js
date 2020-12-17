@@ -11,4 +11,8 @@ class BinaryHeap {
         this.heap.push(value);
         this.bubbleUp();
     }
+    
+    size() {
+        return this.heap.length;
+    }
 
