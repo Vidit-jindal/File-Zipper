@@ -20,3 +20,11 @@ class BinaryHeap {
         return ( this.size()===0 );
     }
 
+    //using iterative approach
+    bubbleUp() {
+        let index = this.size() - 1;
+
+        while (index > 0) {
+            let element = this.heap[index],
+                parentIndex = Math.floor((index - 1) / 2),
+                parent = this.heap[parentIndex];
