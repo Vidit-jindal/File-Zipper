@@ -35,3 +35,13 @@ class BinaryHeap {
             index = parentIndex
         }
     }
+    
+    extractMax() {
+        const max = this.heap[0];
+        const tmp = this.heap.pop();
+        if(!this.empty()) {
+            this.heap[0] = tmp;
+            this.sinkDown(0);
+        }
+        return max;
+    }
