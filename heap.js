@@ -15,4 +15,8 @@ class BinaryHeap {
     size() {
         return this.heap.length;
     }
+    
+    empty(){
+        return ( this.size()===0 );
+    }
 
