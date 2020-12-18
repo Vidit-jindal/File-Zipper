@@ -45,3 +45,19 @@ class BinaryHeap {
         }
         return max;
     }
+    
+    sinkDown(index) {
+
+        let left = 2 * index + 1,
+            right = 2 * index + 2,
+            largest = index;
+        const length = this.size();
+
+        // console.log(this.heap[left], left, length, this.heap[right], right, length, this.heap[largest]);
+
+        if (left < length && this.heap[left][0] > this.heap[largest][0]) {
+            largest = left
+        }
+        if (right < length && this.heap[right][0] > this.heap[largest][0]) {
+            largest = right
+        }
