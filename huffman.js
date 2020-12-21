@@ -25,3 +25,11 @@ class HuffmanCoder{
         let res = String(index*2)+" <= "+index+" => "+String(index*2+1);
         return res + '\n' + left + '\n' + right;
     }
+    destringify(data){
+        let node = [];
+        if(data[this.ind]==='\''){
+            this.ind++;
+            node.push(data[this.ind]);
+            this.ind++;
+            return node;
+        }
