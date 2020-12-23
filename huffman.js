@@ -33,3 +33,12 @@ class HuffmanCoder{
             this.ind++;
             return node;
         }
+         getMappings(node, path){
+        if(typeof(node[1])==="string"){
+            this.mappings[node[1]] = path;
+            return;
+        }
+
+        this.getMappings(node[1][0], path+"0");
+        this.getMappings(node[1][1], path+"1");
+    }
