@@ -47,3 +47,11 @@ class HuffmanCoder{
         this.heap = new BinaryHeap();
 
         const mp = new Map();
+            
+            for(let i=0;i<data.length;i++){
+            if(data[i] in mp){
+                mp[data[i]] = mp[data[i]] + 1;
+            } else{
+                mp[data[i]] = 1;
+            }
+        }
