@@ -42,3 +42,8 @@ class HuffmanCoder{
         this.getMappings(node[1][0], path+"0");
         this.getMappings(node[1][1], path+"1");
     }
+        encode(data){
+
+        this.heap = new BinaryHeap();
+
+        const mp = new Map();
