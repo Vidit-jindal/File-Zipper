@@ -55,3 +55,7 @@ class HuffmanCoder{
                 mp[data[i]] = 1;
             }
         }
+            
+        for(const key in mp){
+            this.heap.insert([-mp[key], key]);
+        }
