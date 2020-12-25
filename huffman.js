@@ -59,3 +59,12 @@ class HuffmanCoder{
         for(const key in mp){
             this.heap.insert([-mp[key], key]);
         }
+            
+            while(this.heap.size() > 1){
+            const node1 = this.heap.extractMax();
+            const node2 = this.heap.extractMax();
+
+            const node = [node1[0]+node2[0],[node1,node2]];
+            this.heap.insert(node);
+        }
+        const huffman_encoder = this.heap.extractMax();
