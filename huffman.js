@@ -68,3 +68,11 @@ class HuffmanCoder{
             this.heap.insert(node);
         }
         const huffman_encoder = this.heap.extractMax();
+
+        this.mappings = {};
+        this.getMappings(huffman_encoder, "");
+
+        let binary_string = "";
+        for(let i=0;i<data.length;i++) {
+            binary_string = binary_string + this.mappings[data[i]];
+        }
