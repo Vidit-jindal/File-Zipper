@@ -76,3 +76,9 @@ class HuffmanCoder{
         for(let i=0;i<data.length;i++) {
             binary_string = binary_string + this.mappings[data[i]];
         }
+            
+        let rem = (8 - binary_string.length%8)%8;
+        let padding = "";
+        for(let i=0;i<rem;i++)
+            padding = padding + "0";
+        binary_string = binary_string + padding;
