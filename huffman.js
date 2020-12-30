@@ -1,21 +1,24 @@
 import { BinaryHeap } from './heap.js';
 
 export { HuffmanCoder }
+
 class HuffmanCoder{
 
     stringify(node){
         if(typeof(node[1])==="string"){
             return '\''+node[1];
         }
-        
+
         return '0' + this.stringify(node[1][0]) + '1' + this.stringify(node[1][1]);
     }
+
     display(node, modify, index=1){
         if(modify){
             node = ['',node];
             if(node[1].length===1)
                 node[1] = node[1][0];
         }
+
         if(typeof(node[1])==="string"){
             return String(index) + " = " + node[1];
         }
@@ -25,6 +28,7 @@ class HuffmanCoder{
         let res = String(index*2)+" <= "+index+" => "+String(index*2+1);
         return res + '\n' + left + '\n' + right;
     }
+
     destringify(data){
         let node = [];
         if(data[this.ind]==='\''){
@@ -33,7 +37,18 @@ class HuffmanCoder{
             this.ind++;
             return node;
         }
-         getMappings(node, path){
+
+        this.ind++;
+        let left = this.destringify(data);
+        node.push(left);
+        this.ind++;
+        let right = this.destringify(data);
+        node.push(right);
+
+        return node;
+    }
+
+    getMappings(node, path){
         if(typeof(node[1])==="string"){
             this.mappings[node[1]] = path;
             return;
@@ -42,25 +57,25 @@ class HuffmanCoder{
         this.getMappings(node[1][0], path+"0");
         this.getMappings(node[1][1], path+"1");
     }
-        encode(data){
+
+    encode(data){
 
         this.heap = new BinaryHeap();
 
         const mp = new Map();
-            
-            for(let i=0;i<data.length;i++){
+        for(let i=0;i<data.length;i++){
             if(data[i] in mp){
                 mp[data[i]] = mp[data[i]] + 1;
             } else{
                 mp[data[i]] = 1;
             }
         }
-            
+
         for(const key in mp){
             this.heap.insert([-mp[key], key]);
         }
-            
-            while(this.heap.size() > 1){
+
+        while(this.heap.size() > 1){
             const node1 = this.heap.extractMax();
             const node2 = this.heap.extractMax();
 
@@ -76,9 +91,24 @@ class HuffmanCoder{
         for(let i=0;i<data.length;i++) {
             binary_string = binary_string + this.mappings[data[i]];
         }
-            
+
         let rem = (8 - binary_string.length%8)%8;
         let padding = "";
         for(let i=0;i<rem;i++)
             padding = padding + "0";
         binary_string = binary_string + padding;
+
+        let result = "";
+        for(let i=0;i<binary_string.length;i+=8){
+            let num = 0;
+            for(let j=0;j<8;j++){
+                num = num*2 + (binary_string[i+j]-"0");
+            }
+            result = result + String.fromCharCode(num);
+        }
+
+        let final_res = this.stringify(huffman_encoder) + '\n' + rem + '\n' + result;
+        let info = "Compression Ratio : " + data.length/final_res.length;
+        info = "Compression complete and file sent for download" + '\n' + info;
+        return [final_res, this.display(huffman_encoder, false), info];
+    }
