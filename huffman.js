@@ -112,7 +112,7 @@ class HuffmanCoder{
         info = "Compression complete and file sent for download" + '\n' + info;
         return [final_res, this.display(huffman_encoder, false), info];
     }
-    
+
     decode(data){
         data = data.split('\n');
         if(data.length===4){
@@ -122,10 +122,12 @@ class HuffmanCoder{
             data[2] = data[3];
             data.pop();
         }
-    this.ind = 0;
+
+        this.ind = 0;
         const huffman_decoder = this.destringify(data[0]);
         const text = data[2];
-    let binary_string = "";
+
+        let binary_string = "";
         for(let i=0;i<text.length;i++){
             let num = text[i].charCodeAt(0);
             let bin = "";
@@ -136,7 +138,8 @@ class HuffmanCoder{
             binary_string = binary_string + bin;
         }
         binary_string = binary_string.substring(0,binary_string.length-data[1]);
-    console.log(binary_string.length);
+
+        console.log(binary_string.length);
 
         let res = "";
         let node = huffman_decoder;
@@ -146,3 +149,13 @@ class HuffmanCoder{
             } else{
                 node = node[1];
             }
+
+            if(typeof(node[0])==="string"){
+                res += node[0];
+                node = huffman_decoder;
+            }
+        }
+        let info = "Decompression complete and file sent for download";
+        return [res, this.display(huffman_decoder, true), info];
+    }
+}
