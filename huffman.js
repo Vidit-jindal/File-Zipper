@@ -112,3 +112,13 @@ class HuffmanCoder{
         info = "Compression complete and file sent for download" + '\n' + info;
         return [final_res, this.display(huffman_encoder, false), info];
     }
+    
+    decode(data){
+        data = data.split('\n');
+        if(data.length===4){
+            // Handling new line
+            data[0] = data[0] + '\n' + data[1];
+            data[1] = data[2];
+            data[2] = data[3];
+            data.pop();
+        }
