@@ -125,3 +125,14 @@ class HuffmanCoder{
     this.ind = 0;
         const huffman_decoder = this.destringify(data[0]);
         const text = data[2];
+    let binary_string = "";
+        for(let i=0;i<text.length;i++){
+            let num = text[i].charCodeAt(0);
+            let bin = "";
+            for(let j=0;j<8;j++){
+                bin = num%2 + bin;
+                num = Math.floor(num/2);
+            }
+            binary_string = binary_string + bin;
+        }
+        binary_string = binary_string.substring(0,binary_string.length-data[1]);
