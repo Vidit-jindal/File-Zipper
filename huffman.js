@@ -122,3 +122,6 @@ class HuffmanCoder{
             data[2] = data[3];
             data.pop();
         }
+    this.ind = 0;
+        const huffman_decoder = this.destringify(data[0]);
+        const text = data[2];
