@@ -136,3 +136,13 @@ class HuffmanCoder{
             binary_string = binary_string + bin;
         }
         binary_string = binary_string.substring(0,binary_string.length-data[1]);
+    console.log(binary_string.length);
+
+        let res = "";
+        let node = huffman_decoder;
+        for(let i=0;i<binary_string.length;i++){
+            if(binary_string[i]==='0'){
+                node = node[0];
+            } else{
+                node = node[1];
+            }
